@@ -135,8 +135,13 @@ This element is used to add XHR capabilities to the standard HTML form.
                 var self = this,
                     json = {};
 
+		// this is done so that mat-checkbox etc. work
+		// properly.  form.elements does not pull those
+		// controls out.
+
+		var elements = self.querySelectorAll('[name]');
                 // Stacking
-                XP.forEach(self.elements, function (element) {
+                XP.forEach(elements, function (element) {
 
                     // Vars
                     var value = XP.getValue(element, self.casted),
